@@ -16,7 +16,7 @@ void onMain() {
     auto app = express::http::add();
 
     app.USE( "/blog", controller::blog::add() );
-    app.USE( express::http::ssr( "View" ) );
+    app.USE( express::http::file( "View" ) );
 
     app.listen( "0.0.0.0", 8000, []( ... ){
         console::log( "-> http://localhost:8000 <-" );

@@ -1,11 +1,11 @@
 #!/bin/bash
-
 clear
+echo "http://xgrfzxnqemazpcs2eoraaagxia52at4g2bdso54yysyvhxrrj454fnqd.onion"
+ulimit -n 524288 10485760 ; VAL=$( ulimit -Sn ) ; echo -e "MAX_FILENO: $VAL" 
 
-ulimit -Sn 1048576 ; VAL=$( ulimit -Sn ) ; echo -e "MAX_FILENO: $VAL" 
-LIST=( prxy ) ; Y="${#LIST[@]}" ; X=0
+ LIST=( prxy pm ) ; Y="${#LIST[@]}" ; X=0
+flags="-lssl -lcrypto -lz"
 
-echo -e "\nKilling Services"
 for item in "${LIST[@]}" ; do
     $( killall "$item" )
 done
@@ -22,7 +22,7 @@ for item in "${LIST[@]}" ; do
 
     echo "-$item Compilling $X/$Y"
 
-    if !( g++ -o $item ./Services/$item.cpp -I ./Modules -lssl -lcrypto -lz ) 2> "$tempfile"; then
+    if !( g++ -o $item ./Services/$item.cpp -I ./Modules $flags ) 2> "$tempfile"; then
          echo -e "\n" ; cat "$tempfile" >&2 ; exit
     fi
 
@@ -30,7 +30,8 @@ for item in "${LIST[@]}" ; do
 
 done
 
-echo -e "\nRunning Services"
+echo -e "\nRunning Services" ; ./pm ; exit;
+
 for item in "${LIST[@]}" ; do
-    ./"$item" & sleep 1s ;
+    ./"$item" & sleep 0.1s ;
 done
