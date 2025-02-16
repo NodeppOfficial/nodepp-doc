@@ -3,7 +3,6 @@
 #include <nodepp/stream.h>
 #include <nodepp/json.h>
 #include <nodepp/fs.h>
-#include "./html.cpp"
 
 namespace controller { namespace blog {
 
@@ -17,16 +16,13 @@ namespace controller { namespace blog {
 
             auto host = cli.protocol.to_lower_case() + "://" + cli.headers["Host"] + cli.path;
 
-            auto file = fs::readable( "./View/article.html" );
-            auto data = stream::await( file );
+            cli.params["DESCRIPTION"] = info["desc"].as<string_t>();
+            cli.params["AUTHOR"]      = info["auth"].as<string_t>();
+            cli.params["TITLE"]       = info["name"].as<string_t>();
+            cli.params["IMAGE"]       = info["img"] .as<string_t>();
+            cli.params["ORIGIN"]      = host;
 
-            cli.render( html::render( data , header_t({
-                { "<!--DESCRIPTION-->", info["desc"].as<string_t>() },
-                { "<!--AUTHOR-->",      info["auth"].as<string_t>() },
-                { "<!--TITLE-->",       info["name"].as<string_t>() },
-                { "<!--IMAGE-->",       info["img"].as<string_t>() },
-                { "<!--ORIGIN-->",      host },
-            }) ));
+            cli.render( "<° ./View/article.html °>" );
 
         } catch(...) {
             cli.redirect( 301, "/blog" );
@@ -34,9 +30,6 @@ namespace controller { namespace blog {
 
         app.ALL([]( express_http_t cli ){
             
-            auto file = fs::readable("./View/blog.html");
-            auto data = stream::await( file );
-
             auto list = fs::read_folder("./View/Blog")
 
             .sort([=]( string_t a, string_t b ){
@@ -63,11 +56,9 @@ namespace controller { namespace blog {
                     data["img"] .as<string_t>(), 
                     data["auth"].as<string_t>(),x
                 );
-            }
+            }   cli.params["CONTENT"] = content;
 
-            cli.render( html::render( data, header_t({
-                "<!-- CONTENT -->", content
-            }) ));
+            cli.render( "<° ./View/blog.html °>" );
         });
 
         return app;

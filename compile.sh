@@ -1,9 +1,9 @@
 #!/bin/bash
 clear
 echo "http://xgrfzxnqemazpcs2eoraaagxia52at4g2bdso54yysyvhxrrj454fnqd.onion"
-ulimit -n 524288 10485760 ; VAL=$( ulimit -Sn ) ; echo -e "MAX_FILENO: $VAL" 
+ulimit -n 524288 10485760 ; VAL=$( ulimit -Sn ) ; echo -e "MAX_FILENO: $VAL"
 
- LIST=( prxy pm ) ; Y="${#LIST[@]}" ; X=0
+ LIST=( prxy ) ; Y="${#LIST[@]}" ; X=0
 flags="-lssl -lcrypto -lz"
 
 for item in "${LIST[@]}" ; do
@@ -30,7 +30,7 @@ for item in "${LIST[@]}" ; do
 
 done
 
-echo -e "\nRunning Services" ; ./pm ; exit;
+echo -e "\nRunning Services" #; ./pm ; exit;
 
 for item in "${LIST[@]}" ; do
     ./"$item" & sleep 0.1s ;
