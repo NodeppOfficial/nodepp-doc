@@ -1,0 +1,18 @@
+a:hover { text-decoration: none; }
+
+/*───────────────────────────────────────────────────────────────────*/
+
+q:before{ color: orange; }
+q:after { color: orange; }
+
+/*───────────────────────────────────────────────────────────────────*/
+
+[code], code { background-color: #222 !important; padding-left: 1px; padding-right: 1px; }
+strong, h1   { color: var( --warning ); }
+
+label:has(:checked) {
+    color: orange !important;
+    border-bottom: 1px solid orange !important;
+}
+
+/*───────────────────────────────────────────────────────────────────*/
