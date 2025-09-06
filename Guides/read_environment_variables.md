@@ -1,6 +1,6 @@
 # Read Environment Variables
 
-The current environment variables can be accessed via `process::env`, to read an **Environment Variable**, you can use `process::env::get()`, the first argument must be the name of the variable you want to read.  
+This code demonstrates how to read environment variables, which are key-value pairs stored outside of your application's code. They are commonly used to manage configuration settings, such as database credentials, API keys, and file paths, without hardcoding them directly into the source.
 
 ```cpp
 #include <nodepp/nodepp.h>
@@ -9,6 +9,7 @@ using namespace nodepp;
 
 void onMain() {
 
+    process::env::init( ".env" );
     console::log( process::env::get("HOME") );
 
 }

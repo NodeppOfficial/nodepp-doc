@@ -1,6 +1,6 @@
 # Copying a File to Another Location
 
-This code snippet demonstrates how to efficiently copy a file from one location to another using Nodepp's asynchronous stream API. It uses stream::pipe() to transfer data in a fast, non-blocking manner, which is ideal for large files.
+This example demonstrates how to copy a file from a source to a destination using Nodepp's asynchronous streaming API. Instead of loading the entire file into memory at once, this method uses stream::pipe() to efficiently transfer data in small chunks. This non-blocking approach is ideal for handling large files, preventing your application from freezing or becoming unresponsive during the copy process.
 
 ```cpp
 #include <nodepp/nodepp.h>

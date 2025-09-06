@@ -1,6 +1,6 @@
 # Read A File As String
 
-The `fs::readable()` function accepts a path and returns a `file_t` instance. The `file_t` class allows you to lazily read the file in a variety of formats. Use `read()` to read the contents as a string.
+This code demonstrates how to read a file piece by piece using Nodepp's fs::readable() and file_t. Instead of loading the entire file into memory at once, this method reads the file in chunks, making it highly memory-efficient for handling large files.
 
 ```cpp
 #include <nodepp/nodepp.h>

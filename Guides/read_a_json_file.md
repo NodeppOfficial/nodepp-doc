@@ -1,6 +1,6 @@
 # Read a JSON File With Nodepp
 
-The `fs::readable` function accepts a path and returns a `file_t` instance. The `file_t` class allows you to lazily read the file in a variety of formats. Use `json::parse` to read and parse the contents of a `.json` file as a plain object.
+This code snippet demonstrates how to read a file and parse its contents as a JSON **(JavaScript Object Notation)** object using Nodepp's streaming and JSON utilities. This is a common pattern for loading configuration files or data from a file system.
 
 ```cpp
 #include <nodepp/nodepp.h>

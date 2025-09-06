@@ -1,6 +1,6 @@
 # Regular Expressions
 
-Nodepp supports Regular Expressions, to use `regex_t` in your code, you must import `regex.h`
+This code demonstrates how to use regular expressions in Nodepp for powerful string pattern matching. Regular expressions, often shortened to regex, are sequences of characters that define a search pattern. They are highly effective for tasks like parsing text, validating input, and extracting specific data.
 
 ```cpp
 #include <nodepp/nodepp.h>

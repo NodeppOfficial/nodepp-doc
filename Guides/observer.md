@@ -1,6 +1,6 @@
 # Observers
 
-Observers are a design pattern in Nodepp that provide a way to implement the Observer pattern, which is a behavioral design pattern that allows objects to be notified when the state of another object changes.
+This code demonstrates the Observer design pattern using Nodepp's observer_t. The Observer pattern is a behavioral pattern where an object, known as the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes. This is a powerful way to implement event handling and reactive programming.
 
 ```cpp
 #include <nodepp/nodepp.h>

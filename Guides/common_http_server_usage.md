@@ -1,4 +1,4 @@
-# Common HTTP Server Usage in Nodepp
+# Common HTTP Server Usage
 
 This example demonstrates how to create a basic HTTP server using the Nodepp framework. The server is configured to listen on port 3000 and handles different types of requests, including basic routing, file serving, and handling of POST data from forms and JSON payloads.
 

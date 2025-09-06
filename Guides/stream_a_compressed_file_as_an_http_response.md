@@ -1,4 +1,4 @@
-# Stream a Compressed File Over an HTTP Response 💾💨
+# Stream a Compressed File Over an HTTP Response
 
 Serving large files efficiently is crucial for web performance. By compressing files before sending them to a client, you can significantly reduce bandwidth usage and improve load times. HTTP compression, commonly using Gzip, allows you to send a smaller, compressed version of a file, which the client's browser automatically decompresses. This guide demonstrates how to stream a file from disk, compress it with Gzip, and send it as an HTTP response using Nodepp.
 

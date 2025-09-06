@@ -1,6 +1,8 @@
 # Garbge Collector
 
-Garbage Collector in Nodepp isn't more than just a simple Smart Pointer `ptr_t` optimized to be shared among other `Async Tasks` and `Multithreaded processes`.
+Nodepp doesn't have a traditional garbage collector but instead uses a smart pointer called ptr_t for automatic memory management. This mechanism simplifies memory handling by automatically deleting an object when its last reference is gone, preventing memory leaks. ptr_t is also designed to be safely shared between different asynchronous tasks and multithreaded processes, which is crucial for building concurrent applications.
+
+The provided examples demonstrate how ptr_t works. A ptr_t is created and a coroutine is added to decrement the object's data member. When the coroutine finishes and the ptr_t goes out of scope, the memory is automatically freed, as shown by the "deleted" message.
 
 ```cpp
 #include <nodepp/nodepp.h>
@@ -30,7 +32,7 @@ void onMain() {
 }
 ```
 
-Here is a more complex example:
+ The second example illustrates how ptr_t manages its reference count when shared across different process tasks. Notice how the count changes, and the memory is only released when the last reference is dropped. This reference-counting mechanism ensures safe, shared ownership of heap-allocated objects.
 
 ```cpp
 #include <nodepp/nodepp.h>

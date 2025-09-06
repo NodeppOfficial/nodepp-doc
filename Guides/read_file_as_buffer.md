@@ -1,8 +1,6 @@
 # Read File As Buffer
 
-The `fs::readable()` function accepts a path and returns a `file_t` instance. The `file_t` class allows you to lazily read the file in a variety of formats.
-
-To read the file into a Buffer instance, first read the file using `fs::await()` or `fs::pipe()` to consume the entire file and convert the data as `array_t`.
+This code demonstrates how to read the entire contents of a file and store it in a buffer, which is a raw data container. Reading a file into a buffer is essential when you need to handle binary data like images, audio files, or compressed archives, or when you need to perform low-level manipulations on the file's content.
 
 ```cpp
 #include <nodepp/nodepp.h>
@@ -18,7 +16,7 @@ void onMain() {
     auto bffr = array_t<uchar>( data.size() );
 
     memcpy( data.get(), bffr.get(), data.size() );
-    
+
     console::log( bffr.join() );
 
 }
