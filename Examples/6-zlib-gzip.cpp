@@ -13,6 +13,7 @@ void onMain() {
         console::log("done"); 
     });
 
-    zlib::gzip::pipe( read, write );
+    zlib::gzip   ::pipe( read, write );
+  //zlib::deflate::pipe( read, write );
 
 }
