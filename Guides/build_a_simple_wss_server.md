@@ -19,7 +19,9 @@ void onMain(){
 
     auto server = https::server([=]( https_t cli ){
         /* Server logic here */
-    }, &ssl ); wss::server( server );
+    }, &ssl ); 
+    
+    wss::server( server );
 
     server.onConnect([=]( wss_t cli ){
 
