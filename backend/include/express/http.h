@@ -151,7 +151,7 @@ public:
             auto bdy = raw.slice(/**/pos[1] );
             auto sby = bdy.slice( 0, 1024   ); header_t obj;
 
-            ptr_t<regex_t> regs ({
+            static ptr_t<regex_t> regs ({
                   regex_t( "filename=\"([^\"]+)\"", true ),
                   regex_t( "content-type: (\\n+)" , true ),
                   regex_t( "name=\"([^\"]+)\""    , true ),
@@ -163,6 +163,9 @@ public:
             regs[2].search(hdr); if( !regs[2].get_memory().empty() ){ obj["name"]    =regs[2].get_memory()[0]; }
             regs[3].search(sby); if( !regs[3].get_memory().empty() ){ sby /*------*/ =regs[3].get_memory()[0]; }
             /*----------------*/ else /*-------------------------*/ { sby.clear(); }
+
+            regs[0].clear_memory(); regs[1].clear_memory();
+            regs[2].clear_memory(); regs[3].clear_memory();
 
             if( !obj.has("filename") ){ (*done)[obj["name"]] = sby; coEnd; } else {
                 auto sha = crypto::hash::SHA256();  sha.update( obj["mimetype"] );
