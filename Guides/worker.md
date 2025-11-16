@@ -10,28 +10,29 @@ using namespace nodepp;
 
 void onMain(){
 
-    ptr_t<int> x = new int(100);
-    mutex_t mut;
+    ptr_t<int> x = new int(100); mutex_t mut;
 
-    worker::add( coroutine::add( COROUTINE(){
+    worker::add( mutex::add( mut, coroutine::add( COROUTINE(){
     coBegin
 
-        while( *x > 0 ){ mut.emit([&](){
+        while( *x > 0 ){
             console::info("Hello World",*x); *x-=1;
-        }); worker::delay( 100 ); coNext; }
+            coDelay( 100 ); coNext; 
+        }
 
     coFinish
-    }));
+    }) ));
 
-    worker::add( coroutine::add( COROUTINE(){
+    worker::add( mutex::add( mut, coroutine::add( COROUTINE(){
     coBegin
 
-        while( *x > 0 ){ mut.emit([&](){
+        while( *x > 0 ){
             console::done("Hello World",*x); *x-=1;
-        }); worker::delay( 100 ); coNext; }
+            coDelay( 100 ); coNext; 
+        }
 
     coFinish
-    }));
+    }) ));
 
 }
 ```

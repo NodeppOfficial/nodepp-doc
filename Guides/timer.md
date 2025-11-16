@@ -30,7 +30,7 @@ void onMain(){
         process::exit(1);
 
     coFinish
-    })),10000);
+    }),10000);
 
 }
 ```
